@@ -62,59 +62,59 @@ private:
         node():next(NULL){}
         ~node(){}
     };
-    node* top_p;
+    node* head;
 
 public:
-    linkStack(){top_p = NULL;}
+    linkStack(){head = NULL;}
     ~linkStack(){
         node* delp;
-        while(top_p){
-            delp = top_p;
-            top_p = top_p ->next;
+        while(head){
+            delp = head;
+            head = head ->next;
             delete delp;
         }
     }
     bool isEmpty() const{
-        return top_p == NULL;
+        return head == NULL;
     }
     void push(const elemType &x){
-        node* n = new node(x,top_p);
-        top_p = n;
+        node* n = new node(x,head);
+        head = n;
     }
     elemType pop(){
-        bool flag(top_p == NULL);
-        node* delp = top_p;
-        top_p = top_p -> next;
+        bool flag(head == NULL);
+        node* delp = head;
+        head = head -> next;
         elemType ans(delp -> data);
         delete delp;
         return ans;
     }
     elemType top() const{
-        return top_p -> data;
+        return head -> data;
     }
 };
 
-int main(){
-   seqStack<int> stack1(2);
-   for(int i(0);i<10;++i){
-       stack1.push(i);
-       cout << stack1.top() << ' ' ;
-   }
-   for (int i(0);i<10;++i){
-       cout << stack1.pop() << ' ';
-   }
-   return 0;
-}
-
 // int main(){
-//     linkStack<int> stack1;
-//         for(int i(0);i<2;++i){
-//         stack1.push(i);
-//         cout << stack1.top() << ' ' ;
-//     }
-//     for (int i(0);i<2;++i){
-//         cout << stack1.pop() << ' ';
-//     }
-
-//     return 1;
+//    seqStack<int> stack1(2);
+//    for(int i(0);i<10;++i){
+//        stack1.push(i);
+//        cout << stack1.top() << ' ' ;
+//    }
+//    for (int i(0);i<10;++i){
+//        cout << stack1.pop() << ' ';
+//    }
+//    return 0;
 // }
+
+int main(){
+    linkStack<int> stack1;
+        for(int i(0);i<2;++i){
+        stack1.push(i);
+        cout << stack1.top() << ' ' ;
+    }
+    for (int i(0);i<2;++i){
+        cout << stack1.pop() << ' ';
+    }
+
+    return 1;
+}
