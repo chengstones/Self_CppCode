@@ -64,6 +64,9 @@ int main(){
 
     char* ans = add_two_string(p,q,len1,len2);
     cout << ans;
+    delete []p;
+    delete []q;
+    delete []ans;
     return 0;
 }
 

@@ -14,7 +14,6 @@ public:
     virtual ~list(){}
 };
 
-// 线性表的顺序实现
 template <class elemType>
 class seqList:public list<elemType>{
 private:
@@ -72,7 +71,6 @@ public:
     }
 };
 
-// 顺序表的链表实现
 template <class elemType>
 class slinkList:public list<elemType>{
 private:
@@ -98,12 +96,12 @@ public:
     }
     void clear(){
         node* p(head->next),*delp;
-        head -> next = NULL; // Attention！！
         while(p){
             delp = p;
             p = p->next;
             delete delp;
         }
+        head -> next = NULL;
     }
     int length() const{
         node*p(head);
