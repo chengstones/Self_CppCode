@@ -1,6 +1,16 @@
 {
     "files.associations": {
         "random": "cpp",
-        "queue": "cpp"
-    }
+        "queue": "cpp",
+        "iostream": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "vector": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "deque": "cpp",
+        "list": "cpp"
+    },
+    "cmake.configureOnOpen": false
 }
