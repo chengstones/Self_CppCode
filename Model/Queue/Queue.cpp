@@ -114,16 +114,16 @@ public:
 //     return 0;
 // }
 
-int main(){
-    linkQueue<int> q1;
-    for(int i(0);i<10;++i){
-        q1.enQueue(i);
-    }
-    cout << q1.getHead() << ' ' << q1.isEmpty() << ' ';
-    cout << endl;
-    for(int i(0);i<10;++i){
-        cout << q1.deQueue() << ' ';
-    }
-    cout << endl;
-    return 0;
-}
+// int main(){
+//     linkQueue<int> q1;
+//     for(int i(0);i<10;++i){
+//         q1.enQueue(i);
+//     }
+//     cout << q1.getHead() << ' ' << q1.isEmpty() << ' ';
+//     cout << endl;
+//     for(int i(0);i<10;++i){
+//         cout << q1.deQueue() << ' ';
+//     }
+//     cout << endl;
+//     return 0;
+// }
