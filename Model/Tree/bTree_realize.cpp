@@ -33,7 +33,7 @@ private:
         Node(T item, Node *L = NULL, Node *R = NULL):data(item),left(L),right(R){}
         ~Node(){}
     };
-    Node *root; // 浜屽弶鏍戠殑鏍硅妭鐐? 
+    Node *root; 
 
 public:
     binaryTree():root(NULL){}
