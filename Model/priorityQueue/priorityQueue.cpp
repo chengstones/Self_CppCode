@@ -69,7 +69,7 @@ public:
         for(;hole>1 && x < array[hole/2];hole/=2){
             array[hole] = array[hole/2];
         }
-        array[hole] = x;
+        array[hole] = x; // hole == 1  or  x >= array[hole/2]
     }
 
     Type deQueue(){
