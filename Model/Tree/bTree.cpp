@@ -212,6 +212,7 @@ void binaryTree<T>::createTree(T flag){
     // 创建树，输入flag 表示非空
     cout << "\n 输入根结点：";
     cin >> x;
+    if( x == flag){root = NULL;return;}
     root = new Node(x);
     que.enQueue(root);
 
@@ -286,4 +287,72 @@ void postOrder() const{
             cout << current.node -> data;
         }
     }
+}
+
+// 根据前序中序确定二叉树
+template <class elemType>
+Node<elemType> *BTree<elemType>::buildTree(
+    elemType pre[],int pl,int pr,
+    elemType mid[],int ml,int mr
+){
+    Node<elemType>*p,*leftRoot,*rightRoot;
+    int i,pos,num;
+    int lpl,lpr,lml,lmr;
+    int rpl,rpr,rml,rmr;
+    if(pl>pr) return NULL;
+    p = new Node<elemType>(pre[pl]); // 找到子数的根
+    if(!root) root = p;
+
+    for(i = ml;i<=mr;++i){
+        if(mid[i]==pre[pl]break;)
+    }// 找到根在中序中的位置
+    pos = i;
+    num = pos - ml; // 找到左子树中的节点个数
+
+    // 找左子树的前序，中序序列下标范围
+    lpl = pl + 1; lpr = pl + num;
+    lml = ml; lmr = pos - 1;
+    leftRoot = buildTree(pre,lpl,lpr,mid,lml,lmr);
+
+    // 找右子树的前序，中序序列下标范围
+    rpl = pl + num + 1; rpr = pr;
+    rml = pos + 1; rmr = mr;
+    rightRoot = buildTree(pre,rpl,rpr,mid,rml,rmr);
+
+    p -> left = leftRoot;
+    p -> right = rightRoot;
+}
+
+// 根据后序中序确定二叉树
+template <class elemType>
+Node<elemType> *BTree<elemType>::buildTree(
+    elemType post[],int pl,int pr,
+    elemType mid[],int ml,int mr
+){
+    Node<elemType>*p,*leftRoot,*rightRoot;
+    int i,pos,num;
+    int lpl,lpr,lml,lmr;
+    int rpl,rpr,rml,rmr;
+    if(pl>pr) return NULL;
+    p = new Node<elemType>(pre[pr]); // 找到子数的根
+    if(!root) root = p;
+
+    for(i = ml;i<=mr;++i){
+        if(mid[i]==pre[pr]break;)
+    }// 找到根在中序中的位置
+    pos = i;
+    num = pos - ml; // 找到左子树中的节点个数
+
+    // 找左子树的后序，中序序列下标范围
+    lpl = pl; lpr = pl + num;
+    lml = ml; lmr = pos - 1;
+    leftRoot = buildTree(pre,lpl,lpr,mid,lml,lmr);
+
+    // 找右子树的后序，中序序列下标范围
+    rpl = pl + num; rpr = pr - 1;
+    rml = pos + 1; rmr = mr;
+    rightRoot = buildTree(pre,rpl,rpr,mid,rml,rmr);
+
+    p -> left = leftRoot;
+    p -> right = rightRoot;
 }
