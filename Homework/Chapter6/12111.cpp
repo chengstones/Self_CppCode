@@ -28,15 +28,16 @@ void remove(Node* &root, int data){
 }
 
 int min_abs(Node* root, int ipt){
-    if (root == NULL) return 2147483647;
     if (root -> data == ipt) return 0;
     if (root -> data < ipt){
         int min1 = ipt - root -> data;
+        if(!root -> right) return min1;
         int min2 = min_abs(root -> right,ipt);
         return (min1 > min2)? min2:min1;
     }
     if (ipt < root -> data){
         int min1 = root -> data - ipt;
+        if(!root -> left) return min1;
         int min2 = min_abs(root -> left,ipt);
         return (min1 > min2)? min2:min1;
     }
@@ -66,6 +67,7 @@ int main()
                 remove(root,ipt);
             } break;
             default:{
+                cin >> ipt;
                 cout << min_abs(root,ipt) << '\n';
             }
         }
