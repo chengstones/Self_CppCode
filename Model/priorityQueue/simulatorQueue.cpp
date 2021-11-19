@@ -1,8 +1,7 @@
 #include <iostream>
+#include <time.h>
 using namespace std;
 
-#include <iostream>
-using namespace std;
 
 template <class elemType>
 class queue{
@@ -167,12 +166,14 @@ class simulator{
 };
 
 simulator::simulator(){
-    cout << "请输入柜台数:"; cin >> noOfServer;
-    cout << "请输入到达时间间隔的上下界（最小间隔时间   最大间隔时间）:";
+    //cout << "请输入柜台数:"; 
+    cin >> noOfServer;
+    //cout << "请输入到达时间间隔的上下界（最小间隔时间   最大间隔时间）:";
     cin >> arrivalLow >> arrivalHigh;
-    cout << "请输入服务时间的上下界（服务时间下界   服务时间上界）：";
+    //cout << "请输入服务时间的上下界（服务时间下界   服务时间上界）：";
     cin >> serviceTimeLow >> serviceTimeHigh;
-    cout << "请输入模拟顾客数："; cin >> customNum;
+    //cout << "请输入模拟顾客数："; 
+    cin >> customNum;
 
     srand(time(NULL));
 }
@@ -225,7 +226,7 @@ int simulator::avgWaitTime(){
 int main()
 {
     simulator sim;
-    cout << "平均等待时间："
-         << sim.avgWaitTime() << endl;
+    cout << sim.avgWaitTime() << endl;
+    //<< "平均等待时间："
     return 0;
 }
