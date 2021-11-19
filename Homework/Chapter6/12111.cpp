@@ -43,24 +43,29 @@ int min_abs(Node* root, int ipt){
     }
 }
 
+void insert(Node* &root,int ipt){
+    Node* p;
+    if(root == NULL) root = new Node(ipt);
+    else{
+        p = root;
+        while(true){
+            if(p->data < ipt){if (p -> right) p = p -> right;else{ p -> right = new Node(ipt);break;}continue;}
+            if(ipt < p->data){if (p -> left) p = p -> left;else{ p -> left = new Node(ipt);break;}continue;}
+        }
+    }
+}
+
 int main()
 {
     int M; cin >> M;
     int opt, ipt;
-    Node* root = NULL,*p;
+    Node* root = NULL;
     for(int i(0);i<M;++i){
         cin >> opt;
         switch(opt){
             case 1:{
                 cin >> ipt;
-                if(root == NULL) root = new Node(ipt);
-                else{
-                    p = root;
-                    while(true){
-                        if(p->data < ipt){if (p -> right) p = p -> right;else{ p -> right = new Node(ipt);break;}continue;}
-                        if(ipt < p->data){if (p -> left) p = p -> left;else{ p -> left = new Node(ipt);break;}continue;}
-                    }
-                }
+                insert(root,ipt);
             } break;
             case 2:{
                 cin >> ipt;
