@@ -62,7 +62,8 @@
         "xmemory": "cpp",
         "xstddef": "cpp",
         "xtr1common": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "xtree": "cpp"
     },
     "cmake.configureOnOpen": false
 }
