@@ -2,20 +2,25 @@
 using namespace std;
 
 template <class KEY, class OTHER>
+struct SET{
+    KEY key;
+    OTHER other;
+};
+
+template <class KEY, class OTHER>
 class BinarySearchTree{
 private:
-    struct SET{
-        KEY key;
-        OTHER other;
-    }
     struct BinaryNode{
         SET<KEY,OTHER> data;
         BinaryNode* left;
         BinaryNode* right;
 
-        BinaryNode(const SET<KEY, OTHER>& thedata, BinaryNode* lt = NULL, BinaryNode* rt = NULL):data(thedata),left(lt),right(rt){}
+        BinaryNode(const SET<KEY, OTHER>& thedata, 
+            BinaryNode* lt = NULL, BinaryNode* rt = NULL):
+            data(thedata),left(lt),right(rt){}
         BinaryNode* root;
     };
+    BinaryNode* root;
 
 public:
     BinarySearchTree(){
@@ -63,7 +68,7 @@ private:
             }
         }
     }
-    SET<KEY,OTHER> * find(const KEY &x) const{
+    SET<KEY,OTHER> * find(const KEY &x,BinaryNode*t) const{
         if(t == NULL || t -> data.key == x)
             return &(t -> data);
             //return (SET<KEY,OTHER>*)t;
@@ -80,6 +85,28 @@ private:
 
 int main()
 {
-    system("pause");
+    SET<int,char*>a[] = {{10,"aaa"},{8,"bbb"},{21,"ccc"},{87,"ddd"},{56,"eee"},{4,"fff"},{11,"ggg"}};
+    BinarySearchTree<int,char*> tree;
+    SET<int,char*> x;
+    SET<int,char*> *p;
+
+    for(int i(0);i<7;++i) tree.insert(a[i]);
+
+    p = tree.find(56);
+    if(p) cout << p -> key << ' ' << p->other << endl;
+    else cout << "NOT FOUND" << endl;
+    p = tree.find(21);
+    if(p) cout << p -> key << ' ' << p->other << endl;
+    else cout << "NOT FOUND" << endl;
+    tree.remove(21);
+    p = tree.find(21);
+    if(p) cout << p -> key << ' ' << p->other << endl;
+    else cout << "NOT FOUND" << endl;
+    x.key = 30;x.other = "xyz";
+    tree.insert(x);
+    p = tree.find(30);
+    if(p) cout << p -> key << ' ' << p->other << endl;
+    else cout << "NOT FOUND" << endl;
+    
     return 0;
 }
