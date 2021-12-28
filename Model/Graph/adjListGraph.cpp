@@ -1,4 +1,5 @@
 #include <iostream>
+#include "../Queue/linkQueue.cpp"
 using namespace std;
 
 template <class TypeOfVer, class TypeOfEdge>
@@ -92,6 +93,55 @@ class adjListGraph:public graph<TypeOfVer,TypeOfEdge>{
             while(p!=NULL && p -> end!= v) p = p->next;
             if(p==NULL) return false;
             else return true;
+        }
+        void dfs()const{
+            bool *visited = new bool[Vers];
+
+            for(int i(0);i<Vers;++i) visited[i] = false;
+
+            for(int i(0);i<Vers;++i){
+                if(visited[i]==true) continue;
+                dfs(i,visited);
+                cout << endl;
+            }
+        }
+
+        void dfs(int start,bool visited[]) const{
+            edgeNode* p = verList[start].head;
+
+            cout << verList[start].ver << '\t';
+            visited[start] = true;
+
+            while(p!=NULL){
+                if(visited[p->end]==false) dfs(p->end,visited);
+                p = p->next;
+            }
+        }
+
+        void bfs() const{
+            bool *visited = new bool[Vers];
+            int currentNode;
+            linkQueue<int> q;
+            edgeNode *p;
+
+            for(int i(0);i<Vers;++i) visited[i] = false;
+
+            for(int i(0);i<Vers;++i){
+                if(visited[i]==true) continue;
+                q.enQueue(i);
+                while(!q.isEmpty()){
+                    currentNode = q.deQueue();
+                    if(visited[currentNode]==true) continue;
+                    cout << verList[currentNode].ver << '\t';
+                    visited[currentNode] = true;
+                    p = verList[currentNode].head;
+                    while(p!=NULL){
+                        if(visited[p->end] == false) q.enQueue(p->end);
+                        p = p->next;
+                    }
+                }
+                cout << endl;
+            }
         }
 };
 
