@@ -20,9 +20,9 @@ void heapSort(int a[],int size){
     int i;
     int tmp;
     for(i = size/2 - 1; i>=0;--i)
-        percolateDown(a,0,size);
+        percolateDown(a,i,size);
 
-    for(i = size/2 - 1; i>0;--i){
+    for(i = size - 1; i>0;--i){
         tmp = a[0];
         a[0] = a[i];
         a[i] = tmp;
